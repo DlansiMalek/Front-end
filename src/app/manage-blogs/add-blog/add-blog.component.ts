@@ -27,7 +27,7 @@ export class AddBlogComponent implements OnInit {
 
   initializeForm() {
     this.form = new FormGroup({
-      title: new FormControl(this.update?this.blog.title:'',[Validators.required]),
+      Title: new FormControl(this.update?this.blog.Title:'',[Validators.required]),
       author: new FormControl(this.update?this.blog.author:'',[Validators.required]),
       content: new FormControl(this.update?this.blog.content:'',[Validators.required]),
       upvote: new FormControl(this.update?this.blog.upvote:0),
@@ -36,7 +36,7 @@ export class AddBlogComponent implements OnInit {
   }
 
   addBlog() {
-    this.update ? this.blogService.updateBlog(this.blog.id, this.form.value).subscribe() : this.blogService.addBlog(this.form.value).subscribe();
+    this.update ? this.blogService.updateArticle(this.blog.id, this.form.value).subscribe() : this.blogService.addArticle(this.form.value).subscribe();
     this.update?this.removeUpdateModal():this.router.navigate(['']);
     
   }

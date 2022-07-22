@@ -20,13 +20,13 @@ export class ListBlogsComponent implements OnInit {
   }
 
   getBlogs() {
-    this.blogService.getBlogs(this.search).subscribe((data:Blog[]) => {
+    this.blogService.getArticles().subscribe((data:Blog[]) => {
       this.blogs = data;
       console.log(data);
     })
   }
 
-  redirectToBlogDetail(id: string){
+  redirectToBlogDetail(id:number){
     this.router.navigate(['blog-details'], { queryParams: { id: id } });
   }
 
@@ -36,12 +36,12 @@ export class ListBlogsComponent implements OnInit {
 
   upvote(blog:Blog) {
     blog.upvote ++;
-    this.blogService.updateBlog(blog.id, blog).subscribe();
+    this.blogService.updateArticle(blog.id, blog).subscribe();
   }
 
   downvote(blog:Blog) {
     blog.downvote ++;
-    this.blogService.updateBlog(blog.id, blog).subscribe();
+    this.blogService.updateArticle(blog.id, blog).subscribe();
   }
 
 }

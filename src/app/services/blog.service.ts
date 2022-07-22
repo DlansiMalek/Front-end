@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { Blog } from "../models/Blog.model";
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { environment } from "src/environments/environment";
+import { Blog } from "../models/Blog.model";
 
-
+    
+  
 @Injectable({
     providedIn: 'root'
   })
@@ -15,23 +16,23 @@ export class BlogService {
 
     }
 
-    getBlogs(search: string = "") {
-        return this.http.get<Blog[]>(this.baseUrl + "blog/?search="+search);
+    getArticles() {
+        return this.http.get<Blog[]>(this.baseUrl + "getArticles.php");
     }
 
-    getBlog(id:string) {
-        return this.http.get<Blog>(this.baseUrl + "blog/"+ id);
+    getArticle(id:number) {
+        return this.http.get<Blog>(this.baseUrl + "getArticle.php/?id="+id);
     }
 
-    addBlog(blog: Blog) {
-        return this.http.post(this.baseUrl + "blog",blog);
+    addArticle(article: Blog) {
+        return this.http.post(this.baseUrl +"createArticle.php",article);
     }
 
-    updateBlog(id:string, blog:Blog) {
-        return this.http.put(this.baseUrl + "blog/" + id, blog);
+    updateArticle(id:number, article:Blog) {
+        return this.http.put(this.baseUrl + "updateArticle.php/?id="+id, article);
     }
 
-    deleteBlog(id:string) {
-        return this.http.delete(this.baseUrl + "blog/" + id);
+    deleteArticle(id:number) {
+        return this.http.get(this.baseUrl+"deleteArticle.php/?id="+id);
     }
 }

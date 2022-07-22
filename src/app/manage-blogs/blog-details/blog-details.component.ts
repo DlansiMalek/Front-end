@@ -1,4 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from 'src/app/models/Blog.model';
@@ -14,7 +14,7 @@ declare var jQuery:any;
 export class BlogDetailsComponent implements OnInit {
 
   blog:Blog;
-  id:string;
+  id:number;
 
   constructor(private route:ActivatedRoute, private blogService:BlogService, private router:Router) { }
 
@@ -28,7 +28,7 @@ export class BlogDetailsComponent implements OnInit {
   }
 
   getBlog() {
-    this.blogService.getBlog(this.id).subscribe((data: Blog) => {
+    this.blogService.getArticle(this.id).subscribe((data: Blog) => {
       this.blog = data;
       console.log(this.blog)
     })
@@ -36,12 +36,12 @@ export class BlogDetailsComponent implements OnInit {
 
   upvote() {
     this.blog.upvote ++;
-    this.blogService.updateBlog(this.id, this.blog).subscribe();
+    this.blogService.updateArticle(this.id, this.blog).subscribe();
   }
 
   downvote() {
     this.blog.downvote ++;
-    this.blogService.updateBlog(this.id, this.blog).subscribe();
+    this.blogService.updateArticle(this.id, this.blog).subscribe();
   }
 
   onUpdate(){
@@ -50,7 +50,7 @@ export class BlogDetailsComponent implements OnInit {
 
   onDelete() {
     if (confirm("Are you sure to delete this blog !!") == true) {
-      this.blogService.deleteBlog(this.blog.id).subscribe();
+      this.blogService.deleteArticle(this.blog.id).subscribe();
       this.router.navigate(['']);
     }
   }
