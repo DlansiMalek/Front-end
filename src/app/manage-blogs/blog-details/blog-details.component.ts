@@ -15,8 +15,9 @@ export class BlogDetailsComponent implements OnInit {
 
   blog:Blog;
   id:number;
-
-  constructor(private route:ActivatedRoute, private blogService:BlogService, private router:Router) { }
+  user:any;
+  constructor(private route:ActivatedRoute, private blogService:BlogService, private router:Router) { 
+    this.user=  JSON.parse(localStorage.getItem('user'));}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -25,6 +26,10 @@ export class BlogDetailsComponent implements OnInit {
     })
 
     this.getBlog();
+
+  }
+  redirectToBlogList(){
+    this.router.navigate(['/list']);
   }
 
   getBlog() {
@@ -51,7 +56,7 @@ export class BlogDetailsComponent implements OnInit {
   onDelete() {
     if (confirm("Are you sure to delete this blog !!") == true) {
       this.blogService.deleteArticle(this.blog.id).subscribe();
-      this.router.navigate(['']);
+      this.router.navigate(['list']);
     }
   }
 

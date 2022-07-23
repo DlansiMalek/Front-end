@@ -5,5 +5,6 @@ export class Blog {
     author: string;
     upvote: number;
     downvote: number;
+    author_id:number;
     
 }

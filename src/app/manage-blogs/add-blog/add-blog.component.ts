@@ -15,29 +15,36 @@ export class AddBlogComponent implements OnInit {
   form:any;
   @Input() blog: Blog;
   @Input() update: boolean = false;
-
-  constructor(private blogService:BlogService, private router:Router) {}
+  user:any;
+  constructor(private blogService:BlogService, private router:Router) {
+    this.user=  JSON.parse(localStorage.getItem('user'));
+  }
 
   
 
   ngOnInit(): void {
-
+    
+    console.log(this.user)
     this.initializeForm();
   }
 
   initializeForm() {
     this.form = new FormGroup({
       Title: new FormControl(this.update?this.blog.Title:'',[Validators.required]),
-      author: new FormControl(this.update?this.blog.author:'',[Validators.required]),
+      author: new FormControl(this.user.name,[Validators.required]),
       content: new FormControl(this.update?this.blog.content:'',[Validators.required]),
       upvote: new FormControl(this.update?this.blog.upvote:0),
-      downvote: new FormControl(this.update?this.blog.downvote:0)
+      downvote: new FormControl(this.update?this.blog.downvote:0),
+      author_id: new FormControl(this.user.id)
+
     });
   }
 
   addBlog() {
+    this.form.value.author=this.user.name;
+    this.form.value.author_id=this.user.id;
     this.update ? this.blogService.updateArticle(this.blog.id, this.form.value).subscribe() : this.blogService.addArticle(this.form.value).subscribe();
-    this.update?this.removeUpdateModal():this.router.navigate(['']);
+    this.update?this.removeUpdateModal():this.router.navigate(['list']);
     
   }
 

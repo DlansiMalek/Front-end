@@ -9,13 +9,27 @@ import { BlogDetailsComponent } from './manage-blogs/blog-details/blog-details.c
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { AddBlogComponent } from './manage-blogs/add-blog/add-blog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './public/home/home.component';
+import { NavbarComponent } from './public/navbar/navbar.component';
+import { LoginComponent } from './public/login/login.component';
+import { RegisterComponent } from './public/register/register.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListBlogsComponent,
     BlogDetailsComponent,
-    AddBlogComponent
+    AddBlogComponent,
+    HomeComponent,
+    NavbarComponent,
+    LoginComponent,
+    RegisterComponent,
+    ContactsComponent,
+    AboutUsComponent,
+  
   ],
   imports: [
     BrowserModule,

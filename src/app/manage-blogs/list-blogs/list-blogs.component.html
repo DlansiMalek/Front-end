@@ -1,4 +1,4 @@
-
+<button class="btn btn-danger" (click)="logOut()">Log Out</button>
 <button class="btn btn-success m-4 mt-4" (click)="redirectToAddBlog()"><i class="fa-solid fa-plus"></i> Add</button>
 <div class="center input-group rounded">
     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="search" (change)="getBlogs()"/>
@@ -23,8 +23,9 @@
               </div>
                 <button (click)="redirectToBlogDetail(blog.id)" class="btn btn-info">Learn More</button>    
             </div>
-            <i class="fas fa-thumbs-up mb-3 mr-3" (click)="upvote(blog)"> {{blog.upvote}}</i>
-            <i class="fas fa-thumbs-down mb-3 " (click)="downvote(blog)"> {{blog.downvote}}</i>
+            <div *ngIf="user.id!=blog.author_id">
+            <i class="fas fa-thumbs-up mb-3 mr-3"  (click)="vote(blog,1)"> {{blog.upvote}}</i>
+            <i class="fas fa-thumbs-down mb-3 " (click)="vote(blog,0)"> {{blog.downvote}}</i></div>
         </div>
         </div>
         <div style="width: 400px; margin: 50px auto">
