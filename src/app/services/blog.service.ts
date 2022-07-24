@@ -17,22 +17,22 @@ export class BlogService {
     }
 
     getArticles() {
-        return this.http.get<Blog[]>(this.baseUrl + "getArticles.php");
+        return this.http.get<Blog[]>(this.baseUrl);
     }
 
     getArticle(id:number) {
-        return this.http.get<Blog>(this.baseUrl + "getArticle.php/?id="+id);
+        return this.http.get<Blog>(this.baseUrl + "/"+id);
     }
 
     addArticle(article: Blog) {
-        return this.http.post(this.baseUrl +"createArticle.php",article);
+        return this.http.post(this.baseUrl,article);
     }
 
     updateArticle(id:number, article:Blog) {
-        return this.http.put(this.baseUrl + "updateArticle.php/?id="+id, article);
+        return this.http.put(this.baseUrl + "/"+id, article);
     }
 
     deleteArticle(id:number) {
-        return this.http.get(this.baseUrl+"deleteArticle.php/?id="+id);
+        return this.http.delete(this.baseUrl+"/"+id);
     }
 }

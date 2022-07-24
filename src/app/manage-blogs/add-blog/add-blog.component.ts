@@ -30,12 +30,13 @@ export class AddBlogComponent implements OnInit {
 
   initializeForm() {
     this.form = new FormGroup({
-      Title: new FormControl(this.update?this.blog.Title:'',[Validators.required]),
+      title: new FormControl(this.update?this.blog.title:'',[Validators.required]),
       author: new FormControl(this.user.name,[Validators.required]),
       content: new FormControl(this.update?this.blog.content:'',[Validators.required]),
+      author_id: new FormControl(this.user.id),
       upvote: new FormControl(this.update?this.blog.upvote:0),
       downvote: new FormControl(this.update?this.blog.downvote:0),
-      author_id: new FormControl(this.user.id)
+      
 
     });
   }

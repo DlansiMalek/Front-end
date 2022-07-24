@@ -9,13 +9,13 @@ import { User } from "../models/User.model";
     providedIn: 'root'
   })
 export class UserService{
-    baseUrl: string = environment.baseUrl;
+    baseUrl: string = environment.base2Url;
     constructor(private http:HttpClient){}
     login(user:User){
-        return this.http.post(this.baseUrl+"login.php",user);
+        return this.http.post(this.baseUrl+"login",user);
     }
     register(user:User){
-        return this.http.post(this.baseUrl+"register.php",user);
+        return this.http.post(this.baseUrl+"register",user);
     }
 
     getUsersByEvaluation(article_id:number, evall:number) {

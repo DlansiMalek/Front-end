@@ -13,7 +13,7 @@ export interface User{
     userInfo:string
 }
 
-export class ba9ara {
+export class Client {
     id:number;
     name:string;
     email:string;

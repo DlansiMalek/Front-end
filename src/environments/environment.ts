@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://localhost/crudphp/api/"
+  baseUrl: "http://127.0.0.1:8000/api/v1/articles",
+  base2Url:"http://127.0.0.1:8000/api/v1/"
 };
 
 /*

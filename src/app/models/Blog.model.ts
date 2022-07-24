@@ -1,10 +1,11 @@
 export class Blog {
     id: number;
-    Title: string;
-    content: string;
+    title: string;
     author: string;
+    content: string;
+    author_id:number;
     upvote: number;
     downvote: number;
-    author_id:number;
+    
     
 }
